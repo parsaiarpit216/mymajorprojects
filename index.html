@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link rel="icon" type="image/webp" href="logo.webp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Projects</title>
+    <style>
+        :root {
+            --bg-color: #f5ec6da8;      /* Warm Cream */
+            --card-bg: #ffffff;
+            --accent-warm: #d4a373cc;   /* Muted Terracotta */
+            --text-main: #432818;     /* Deep Espresso */
+            --text-muted: #7f5539;    /* Warm Brown */
+            --soft-shadow: 0 20px 40px rgba(247, 130, 52, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'optima', 'Segoe UI', serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        /* Elegant Header */
+        header {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(180deg, #f3e9dc 0%, var(--bg-color) 100%);
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        header p {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Alternating Layout */
+        .project-item {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            margin-bottom: 150px;
+            opacity: 0;he Autumn Collection
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .project-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .project-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image Styling */
+        .image-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 60px 5px 60px 5px; /* Organic shape */
+            box-shadow: var(--soft-shadow);
+        }
+
+        /* Text Content */
+        .text-content {
+            flex: 1;
+        }
+
+        .category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-warm);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .description p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--accent-warm);
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .project-item, .project-item:nth-child(even) {
+                flex-direction: column;
+                gap: 40px;
+                margin-bottom: 100px;
+            }
+            .image-container img {
+                height: 350px;
+            }
+        }
+
+        footer {
+            padding: 80px;
+            background-color: #f3e9dc;
+            text-align: center;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>List of Major Projects</h1>
+            <p>Thoughtful designs and projects.</p>
+        </div>
+    </header>
+
+    <div class="container" id="project-feed">
+        </div>
+
+    <footer>
+        <p> Arpit Parsai © All Rights Reserved &bull; 2025-26</p>
+    </footer>
+
+    <script>
+        const projectData = [
+            {
+                cat: "Arduino",
+                title: "Line Follower Robot using Arduino",
+                img: "Line-Follower.jpg",
+                p1: "A line follower robot or LFR is an autonomous guided robot designed to follow a path or line, typically a black line on white surface. These robots are used in industrial automation, warehouse logistics, and educational purposes....",
+                p2: "A line follower robot operates by detecting and following a black line on a surface. But how exactly does it recognize the line? The principle is based on the differing light properties of black and white surfaces. Black surfaces absorb most of the light, while white surfaces reflect nearly all of it. This difference is leveraged by sensors like LDRs (Light Dependent Resistors), IR sensors, or specialized line sensors. For our project, we use line sensors due to their superior accuracy and precision.."
+            },
+            {
+                cat: "Sustainable Product",
+                title: "ULtrasonic RADAR",
+                img: "radar.jpg",
+                p1: "This Arduino-based project simulates a radar system using an ultrasonic sensor mounted on a servo motor. As the servo sweeps from 0° to 180° and back, the ultrasonic sensor measures distances at each angle. Detected objects (called blips are plotted in real-time on a 128x64 OLED display in a radar-style layout. ..",
+                p2: "Blips fade over time, mimicking a real radar scanner. This project is great for learning about sensors, servo control, graphics programming, and basic trigonometry on microcontrollers. ."
+            },
+            {
+                cat: "When the soil is dry, Arduino will command the water pump to run. Our plant is absolutely cheerful anytime!",
+                title: "Automatic Watering System for My Plants",
+                img: "plant.jpeg",
+                p1: "Our system measures the soil moisture and waters automatically according to it. A blue LED tells us when the bucket is empty. BME280 monitors and OLED displays the temperature and humidity in the room. Temporary, it's used indoors only because it needs electrical outlet. In the future, we want to use solar power to run it. .",
+                p2: "When the value obtained from the soil moiture sensor falls below 300, the water pump starts to run and waters for plants. 300 indicates that the soil is dry. An outlet supplies power to the pump and the relay module(JQC-3FF-S-Z) regulates the pump. A piezo speaker will let us know that watering is complete. The soil moisture is measured once every 60 seconds. ."
+            },
+            {
+                cat: "Visual Identity",
+                title: "PixelCraft Cube",
+                img: "cube.jpg",
+                p1: "The PixelCraft Cube is a fully custom interactive 3D NeoPixel display inspired by the aesthetic and interactivity of Minecraft. Built around a Raspberry Pi Pico 2 W, an Adafruit CircuitPlayground Bluefruit, and a network of precisely mapped addressable LEDs, the cube transforms real-world motion and digital input into dynamic voxel-style light animations. Designed as both a visual showpiece and an interactive platform, the PixelCraft Cube bridges physical computing with Minecraft's creativity, bringing the blocky, animated sculpture to life..",
+                p2: "Raspberry Pi Pico 2 W and breadboard,CircuitPlayground Bluefruit and USB cable,I2C relay (for PixelBlaze power),Clear Acrylic Panels,etc are used."
+            },
+            {
+                cat: "Clock",
+                title: "Word Clock Assembly With an Ambient Light Sensor",
+                img: "clock.jpg",
+                p1: "The GurlgeApps Word Clock is a USB-powered open-source digital clock which shows the time as words in English. The letters in an 8x8 grid layout can be individually illuminated in any colour. This small desktop clock is a descendant of the multi-language Biegert & Funk QLOCKTWO clocks which use larger 10x11 grids. These clocks tell the time to the nearest five minutes..",
+                p2: "The 3D printed clock is a kit based on the Raspberry Pi Pico W. The clock connects to the Internet over Wi-Fi to retrieve the time using the Network Time Protocol (NTP). The software is written in MicroPython making it easy to modify."
+            }
+        ];
+
+        const feed = document.getElementById('project-feed');
+
+        projectData.forEach(p => {
+            const item = document.createElement('div');
+            item.className = 'project-item';
+            item.innerHTML = `
+                <div class="image-container">
+                    <img src="${p.img}" alt="${p.title}">
+                </div>
+                <div class="text-content">
+                    <span class="category">${p.cat}</span>
+                    <h2 class="project-title">${p.title}</h2>
+                    <div class="description">
+                        <p>${p.p1}</p>
+                        <p>${p.p2}</p>
+                    </div>
+                    <a href=" https://arpitparsai.vercel.app/#contact" class="read-more">To know more,Let's Connect</a>
+                </div>
+            `;
+            feed.appendChild(item);
+        });
+
+        // Scroll Observer
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if(e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-item').forEach(i => obs.observe(i));
+    </script>
+</body>
+</html>
